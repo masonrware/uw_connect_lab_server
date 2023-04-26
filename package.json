@@ -1,0 +1,19 @@
+{
+  "name": "data_store_server",
+  "version": "1.0.0",
+  "description": "This is a MEAN server to receive and store data from a network.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masonrware/uw_connect_lab_server.git"
+  },
+  "author": "Mason R. Ware",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masonrware/uw_connect_lab_server/issues"
+  },
+  "homepage": "https://github.com/masonrware/uw_connect_lab_server#readme"
+}
