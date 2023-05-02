@@ -1,8 +1,8 @@
 import * as mongodb from "mongodb";
-import { Employee } from "./employee";
+import { entry } from "./entry";
  
 export const collections: {
-   employees?: mongodb.Collection<Employee>;
+   entrys?: mongodb.Collection<entry>;
 } = {};
  
 // use a mongodb atlas URI to connect to a cloud hosted database
@@ -13,11 +13,11 @@ export async function connectToDatabase(uri: string) {
    const db = client.db("meanStackExample");
    await applySchemaValidation(db);
  
-   const employeesCollection = db.collection<Employee>("employees");
-   collections.employees = employeesCollection;
+   const entrysCollection = db.collection<entry>("entrys");
+   collections.entrys = entrysCollection;
 }
  
-// Update our existing collection with JSON schema validation so we know our documents will always match the shape of our Employee model, even if added elsewhere.
+// Update our existing collection with JSON schema validation so we know our documents will always match the shape of our entry model, even if added elsewhere.
 // For more information about schema validation, see this blog series: https://www.mongodb.com/blog/post/json-schema-validation--locking-down-your-model-the-smart-way
 async function applySchemaValidation(db: mongodb.Db) {
    const jsonSchema = {
@@ -47,11 +47,11 @@ async function applySchemaValidation(db: mongodb.Db) {
  
    // Try applying the modification to the collection, if the collection doesn't exist, create it
   await db.command({
-       collMod: "employees",
+       collMod: "entrys",
        validator: jsonSchema
    }).catch(async (error: mongodb.MongoServerError) => {
        if (error.codeName === 'NamespaceNotFound') {
-           await db.createCollection("employees", {validator: jsonSchema});
+           await db.createCollection("entrys", {validator: jsonSchema});
        }
    });
 }
