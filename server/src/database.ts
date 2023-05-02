@@ -5,6 +5,7 @@ export const collections: {
    employees?: mongodb.Collection<Employee>;
 } = {};
  
+// use a mongodb atlas URI to connect to a cloud hosted database
 export async function connectToDatabase(uri: string) {
    const client = new mongodb.MongoClient(uri);
    await client.connect();
