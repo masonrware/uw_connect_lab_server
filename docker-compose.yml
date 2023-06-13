@@ -1,0 +1,11 @@
+version: '3'
+services:
+  server:
+    build: .
+    env_file: 
+      - "server/.env"
+    container_name: uw_connect_server
+    hostname: masonrware
+    restart: always
+    ports:
+      - "5200:5200"
